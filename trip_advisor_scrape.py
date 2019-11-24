@@ -8,6 +8,9 @@ Original file is located at
 
 #Below is our Web Scraper in action. The scraper goes through over 100,000 pages of TripAdvisor to scrape the reviews posted on the website for each National Park.
 Reference: https://github.com/susanli2016/NLP-with-Python/blob/master/Web%20scraping%20Hilton%20Hawaiian%20Village%20TripAdvisor%20Reviews.py
+
+
+#CODE CELL 1
 """
 
 ### TOTAL CODE TOGETHER
@@ -254,6 +257,12 @@ DB_COLUMN1 = 'review_date'
 #list all starting urls we'll parse data from for Trip Advisor
 #It was easier to past the static URLS to the Jupyter, rather than pull in the Google Drive doc.
 
+##DEMO START URL:
+
+start_urls = ['https://www.tripadvisor.com/Attraction_Review-g60672-d6776101-Reviews-National_Park_of_American_Samoa-Pago_Pago_Tutuila.html']
+
+'''
+To Implement all national parks - uncomment this list below:
 start_urls = [
 'https://www.tripadvisor.com/Attraction_Review-g60709-d12785836-Reviews-Acadia_National_Park-Bar_Harbor_Mount_Desert_Island_Maine.html',
 'https://www.tripadvisor.com/Attraction_Review-g60672-d6776101-Reviews-National_Park_of_American_Samoa-Pago_Pago_Tutuila.html',
@@ -317,6 +326,7 @@ start_urls = [
 'https://www.tripadvisor.com/Attraction_Review-g61000-d489919-Reviews-Yosemite_Valley-Yosemite_National_Park_California.html',
 'https://www.tripadvisor.com/Attraction_Review-g143057-d103336-Reviews-Zion_s_Main_Canyon-Zion_National_Park_Utah.html'
 ]
+'''
 
 lang = 'en'
 
@@ -358,6 +368,8 @@ total_reviews= 0
 for review in total_reviews_per_park:
   total_reviews += int(review[1])
 
+print (total_reviews_per_park)
+
 """##Cell 7
 ### Loading a new session in Google Colab will generally require you to load the data again
 
@@ -385,9 +397,6 @@ import zipfile
 #set path to Google Colab
 
 mypath = ('/content/')
-
-
-import zipfile
 
 #set variable as path
 
@@ -470,7 +479,7 @@ df_cleaning.head()
 """### We're going to visualize the table just to ensure we have correct data"""
 
 df_cleaning.sort_values(by =['user_rating'], ascending = True)
-df_cleaning.sort_values(by =['helpful_vote'], ascending = False).head(15)
+df_cleaning.sort_values(by =['helpful_vote'], ascending = False).head(5)
 
 #create a copy of the dataframe for cleaning
 df_working = df_cleaning.copy()
@@ -494,10 +503,13 @@ from os.path import isfile
 import glob
 import pandas as pd
 
+'''
+This cell is only necessary if you are loading loading files
+'''
 
 #change the path to a new spending folder:
 
-os.chdir('/content/drive/My Drive/spending_files')
+#os.chdir('/content/drive/My Drive/spending_files')
 
 !pip install -q tabula-py
 
@@ -662,13 +674,15 @@ spending_all_NP.groupby("park_unit").size()
 # Convert dataframe to csv
 spending_all_NP.to_csv("vistors_spending_all_NPs.csv", sep=',',index=False)
 # reading csv file  
-pd.read_csv("vistors_spending_all_NPs.csv")
+all_NPS = pd.read_csv("vistors_spending_all_NPs.csv")
+
+all_NPS.head()
 
 """#Tabula data extraction for Budget Allocation on each Nation Park"""
 
 #change the path to a new budget folder:
 
-os.chdir('/content/drive/My Drive/budget_files')
+#os.chdir('/content/drive/My Drive/budget_files')
 
 # 2018 budget data
 #Convert pdf table into tabula format - note: pages list contains the pages where the table belongs to in the report
