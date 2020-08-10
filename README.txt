@@ -22,7 +22,7 @@ INSTALLATION - How to install and setup your code
 1. TripAdvisor Scraper:
 	- The code was created using Google Colaboratory Jupyter Notebook and can be downloaded as an IPYNB or Python file from the GitHub listed below.  Instructions are include for scraping each National Park, however, the files have already been obtained and can be loaded it for quick manipulation.  The IPYNB file includes instructions for downloading the ZIP file of CSVs and loading into Google Colaboratory.  Users may need to install the following non-standard python libraries in Google Colaboratory or local machine: Tabula, Pandas, BeautifulSoup.  
 
-	- https://github.gatech.edu/DVA-team97/TripAdvisor-Web-Scraper
+	- https://github.com/charlie-leifheit/National_Park_TripAdvisor_Review_Analysis
 
 
 2.  National Park Feature Engineering
